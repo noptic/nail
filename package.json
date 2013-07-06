@@ -1,6 +1,6 @@
 {
     "name": "nail",
-    "description": "Modular class creation with multi inheritance and reflection.",
+    "description": "Nail is a cutomizable, framework-independent tool for js/coffee class creation.",
     "version": "0.1.0alpha1",
     "homepage": "https://github.com/noptic/nail",
     "author": {
