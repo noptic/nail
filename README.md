@@ -1,6 +1,8 @@
+Nail
+====
 About
 -----
-Nail is a cutomizable, framework-independent tool fpr js/coffee class creation.
+Nail is a cutomizable, framework-independent tool for js/coffee class creation.
 
 Every aspect of the class (properties, methods, inhitence) is handled by an
 independent module.
@@ -23,12 +25,12 @@ Features
  - properties with combined setter getter method
  - methods with overload support
  - classic inheritance (prototype chain)
- - All classes are defined in a container
- - All classes have a fully qualified name
+ - classes are added to a container (for example moduele.exports)
+ - classes have a fully qualified name
 
 Documentation
 -------------
-You can find in depth descriptions on the features in the [docs](./tree/master/docs) directory.
+You can find in depth descriptions on the features in the [docs](tree/master/docs) directory.
 
 Example
 -------
