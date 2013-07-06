@@ -31,4 +31,4 @@ The followingcode will create a class with the method `hello()`.
 
 Oveloading:
 -----------
-`nail-methods` allow method [overloading][method_overloading.coffe.md]
+`nail-methods` allow method [overloading](./method_overloading.coffe.md)
