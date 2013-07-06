@@ -7,6 +7,7 @@
         "name": "Oliver Anan",
         "email": "oliver@ananit.de"
     },
+    "keywords": ["nail", "class", "util", "class creation"],
     "repository": {
         "type": "git",
         "url": "https://github.com/noptic/nail.git"
