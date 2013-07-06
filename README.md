@@ -30,7 +30,7 @@ Features
 
 Documentation
 -------------
-You can find in depth descriptions on the features in the [docs](tree/master/docs) directory.
+You can find in depth descriptions on the features in the [docs](../../tree/master/docs) directory.
 
 Example
 -------
