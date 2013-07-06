@@ -63,7 +63,7 @@
     }
   };
 
-  module.exports.basics.overload = {
+  module.exports.basics['overload with default'] = {
     "setUp": function(done) {
       this.classes = {};
       nail.to(this.classes, 'nail.example', {
