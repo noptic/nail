@@ -1,3 +1,3 @@
-# nail
-
-Modular class creation with multi inheritance and reflection.
+nail
+====
+Modular class creation

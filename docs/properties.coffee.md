@@ -1,13 +1,12 @@
-Basic Usage
+Properties
 ===========
 About
 -----
-This script demonstartes how to use nail.
-It is written in literate coffee and can be run as a nodeunit test.
+This script demonstartes how to add properties to a nail class.
+It is written in literate coffee script and can be run as a nodeunit test.
 
 Setup
 -----
-First we have to load nail and create a test group:
 
     nail = require '../lib/nail.js'
     module.exports.basics = {}
@@ -49,7 +48,7 @@ To change a property  we call the same function but pass the new value as first 
 
 Generic get and set
 -------------------
-The actual value of `foo` is stored in `_foo`. When calling the function `foo`
+The value of `foo` is stored in `_foo`. When calling the function `foo`
 
     module.exports.basics.properties["helper property"] = (test) ->
       test.expect 1

@@ -9,9 +9,15 @@ module.exports = (grunt) ->
         src: ['*.coffee']
         dest: 'lib'
         ext: '.js'
-       
+      create_js_examples:
+        expand: true
+        cwd: 'docs'
+        src: ['*.coffee.md']
+        dest: 'test'
+        ext: '_generated_test.js'
+
     nodeunit:
-      files: ['test/**/*_test.coffee','docs/**/*.coffee.md']
+      files: ['test/**/*_test.coffee','test/**/*_test.js']
 
     watch:
       src:
