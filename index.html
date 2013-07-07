@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Nail : Nail is a cutomizable, framework-independent tool for js/coffee class creation." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Nail</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/noptic/nail">View on GitHub</a>
+
+          <h1 id="project_title">Nail</h1>
+          <h2 id="project_tagline">Nail is a cutomizable, framework-independent tool for js/coffee class creation.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/noptic/nail/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/noptic/nail/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="nail" class="anchor" href="#nail"><span class="octicon octicon-link"></span></a>Nail</h1>
+
+<h2>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h2>
+
+<p>Nail is a cutomizable, framework-independent tool for js/coffee class creation.</p>
+
+<p>Every aspect of the class (properties, methods, inhitence) is handled by an
+independent module.</p>
+
+<p>All modules (incuding the core) can be replaced.</p>
+
+<p>Creating your custom version of nail is easy:</p>
+
+<pre><code>module.exports = require('nail-core').use(
+    require 'nail-extend'
+    require 'nail-properties'
+    require 'nail-methods'
+    require './my/awesome/module.js'
+)
+</code></pre>
+
+<p>This package contains the most common modules ('nail-extend','nail-properties', 'nail-methods')</p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>properties with combined setter getter method</li>
+<li>methods with overload support</li>
+<li>classic inheritance (prototype chain)</li>
+<li>classes are added to a container (for example moduele.exports)</li>
+<li>classes have a fully qualified name</li>
+</ul><h2>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p>You can find in depth descriptions on the features in the <a href="../../tree/master/docs">docs</a> directory.</p>
+
+<h2>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<p>Let us define some classes:</p>
+
+<pre><code>nail = require('nail')
+nail.to exports, 'myPakage', MyParent:
+    methods:
+        init: (properties) -&gt;
+            for name,value of properties
+                @[name] value
+        hello: -&gt; 'hello'
+
+nail.to exports, 'myPackage', MyChild:
+    extend: exports.MyParent
+    prperties:
+        name:   'anon'
+    methods:
+        hello:
+            0: -&gt; @hello(@name)"
+            n: (otherName) -&gt; "hello #{name}"
+
+bob = new exports.Mychild(name: 'Bob')
+bob.hello() #"hello Bob"
+bob.name 'Holy Bob'
+bob.hello() #"hello Holly Bob"
+bob.hello('stranger') #"hello stranger"
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Nail maintained by <a href="https://github.com/noptic">noptic</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
