@@ -30,8 +30,36 @@ module.exports = (grunt) ->
         files: ['test/**/*.coffee']
         tasks: ['nodeunit']
 
+    concat:
+      options:
+        separator: '</section><sextion>\n'
+      docs:
+        src:[
+          'README.md'
+          'docs/properties.coffee.md'
+          'docs/methods.coffee.md'
+          'docs/method_overloading.coffee.md'
+          ]
+        dest: 'index.md'
+    markdown:
+      all:
+        files: [
+          expand: true,
+          src: 'index.md',
+          dest: './',
+          ext: '.html'
+          ]
+        options:
+          template: 'template.jst',
+          markdownOptions:
+            gfm: true,
+            highlight: 'auto'
+
+
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-nodeunit'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-
+  grunt.loadNpmTasks 'grunt-contrib-concat'
+  grunt.loadNpmTasks 'grunt-markdown'
   grunt.registerTask 'default', ['coffee', 'nodeunit']
+  grunt.registerTask 'page', ['coffee', 'nodeunit', 'concat', 'markdown']

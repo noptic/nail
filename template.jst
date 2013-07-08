@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>NAIL - A modular class creation tool</title>
+  <link rel="stylesheet" href="css/foundation.css" />
+  <script src="js/vendor/custom.modernizr.js"></script>
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/dark.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('code').attr('class','coffeescript');
+      $.getScript('"http://yandex.st/highlightjs/7.3/highlight.min.js"');
+      $(document).foundation();
+    })
+  </script>
+</head>
+<body>
+
+	<div class="row">
+                <div class="large-2 columns">
+                  <img src="images/nail.png" />
+                </div>
+		<div class="large-10 columns">
+			<h1>NAIL</h1>
+			<p>A modular class creation tool</p>
+			<hr />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-10 columns section-container auto" data-section>
+                  <section><%=content%></section>
+                </div>
+	</div>
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="js/foundation.min.js"></script>
+
+</body>
+</html>
+

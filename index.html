@@ -1,115 +1,251 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Nail : Nail is a cutomizable, framework-independent tool for js/coffee class creation." />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>NAIL - A modular class creation tool</title>
+  <link rel="stylesheet" href="css/foundation.css" />
+  <script src="js/vendor/custom.modernizr.js"></script>
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/dark.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('code').attr('class','coffeescript');
+      $.getScript('"http://yandex.st/highlightjs/7.3/highlight.min.js"');
+      $(document).foundation();
+    })
+  </script>
+</head>
+<body>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+	<div class="row">
+                <div class="large-2 columns">
+                  <img src="images/nail.png" />
+                </div>
+		<div class="large-10 columns">
+			<h1>NAIL</h1>
+			<p>A modular class creation tool</p>
+			<hr />
+		</div>
+	</div>
 
-    <title>Nail</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/noptic/nail">View on GitHub</a>
-
-          <h1 id="project_title">Nail</h1>
-          <h2 id="project_tagline">Nail is a cutomizable, framework-independent tool for js/coffee class creation.</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/noptic/nail/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/noptic/nail/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="nail" class="anchor" href="#nail"><span class="octicon octicon-link"></span></a>Nail</h1>
-
-<h2>
-<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h2>
-
+	<div class="row">
+		<div class="large-10 columns section-container auto" data-section>
+                  <section><h1>About</h1>
 <p>Nail is a cutomizable, framework-independent tool for js/coffee class creation.</p>
-
 <p>Every aspect of the class (properties, methods, inhitence) is handled by an
 independent module.</p>
-
 <p>All modules (incuding the core) can be replaced.</p>
-
 <p>Creating your custom version of nail is easy:</p>
-
-<pre><code>module.exports = require('nail-core').use(
-    require 'nail-extend'
-    require 'nail-properties'
-    require 'nail-methods'
-    require './my/awesome/module.js'
-)
-</code></pre>
-
-<p>This package contains the most common modules ('nail-extend','nail-properties', 'nail-methods')</p>
-
-<h2>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
-
+<pre><code><span class="module"><span class="keyword">module</span>.exports = require<span class="container">('<span class="title">nail</span>-<span class="title">core'</span>)</span>.use<span class="container">(
+    <span class="title">require</span> '<span class="title">nail</span>-<span class="title">extend'</span>
+    <span class="title">require</span> '<span class="title">nail</span>-<span class="title">properties'</span>
+    <span class="title">require</span> '<span class="title">nail</span>-<span class="title">methods'</span>
+    <span class="title">require</span> './<span class="title">my</span>/<span class="title">awesome</span>/<span class="title">module</span>.<span class="title">js'</span>
+)</span></code></pre>
+<p>This package contains the most common modules (&#39;nail-extend&#39;,&#39;nail-properties&#39;, &#39;nail-methods&#39;)</p>
+<h2>Features</h2>
 <ul>
 <li>properties with combined setter getter method</li>
 <li>methods with overload support</li>
 <li>classic inheritance (prototype chain)</li>
 <li>classes are added to a container (for example moduele.exports)</li>
 <li>classes have a fully qualified name</li>
-</ul><h2>
-<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
-
+</ul>
+<h2>Documentation</h2>
 <p>You can find in depth descriptions on the features in the <a href="../../tree/master/docs">docs</a> directory.</p>
-
-<h2>
-<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
-
+<h2>Example</h2>
 <p>Let us define some classes:</p>
-
 <pre><code>nail = require('nail')
-nail.to exports, 'myPakage', MyParent:
+nail.<span class="keyword">to</span> exports, 'myPakage', MyParent:
     methods:
         init: (properties) -&gt;
-            for name,value of properties
-                @[name] value
+            <span class="keyword">for</span> <span class="property">name</span>,value <span class="keyword">of</span> properties
+                @[<span class="property">name</span>] value
         hello: -&gt; 'hello'
 
-nail.to exports, 'myPackage', MyChild:
+nail.<span class="keyword">to</span> exports, 'myPackage', MyChild:
     extend: exports.MyParent
     prperties:
-        name:   'anon'
+        <span class="property">name</span>:   'anon'
     methods:
         hello:
-            0: -&gt; @hello(@name)"
-            n: (otherName) -&gt; "hello #{name}"
+            <span class="number">0</span>: -&gt; @hello(@<span class="property">name</span>)<span class="string">"
+            n: (otherName) -&gt; "</span>hello <span class="comment">#{name}"</span>
 
-bob = new exports.Mychild(name: 'Bob')
-bob.hello() #"hello Bob"
-bob.name 'Holy Bob'
-bob.hello() #"hello Holly Bob"
-bob.hello('stranger') #"hello stranger"
-</code></pre>
-      </section>
-    </div>
+bob = new exports.Mychild(<span class="property">name</span>: 'Bob')
+bob.hello() <span class="comment">#"hello Bob"</span>
+bob.<span class="property">name</span> 'Holy Bob'
+bob.hello() <span class="comment">#"hello Holly Bob"</span>
+bob.hello('stranger') <span class="comment">#"hello stranger"&lt;/section&gt;&lt;sextion&gt;</span></code></pre>
+<h1>Properties</h1>
+<h2>About</h2>
+<p>This script demonstartes how to add properties to a nail class.
+It is written in literate coffee script and can be run as a nodeunit test.</p>
+<h2>Setup</h2>
+<pre><code>nail = require <span class="string">'../lib/nail.js'</span>
+<span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span>basics = <span class="cell">{}</span>
+<span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span><span class="transposed_variable">basics.</span><span class="keyword">properties</span> = <span class="cell">{}</span></code></pre>
+<h2>Creating Properties</h2>
+<p>The followingcode will create a class with the property <code>foo</code>.</p>
+<pre><code>module.exports.basics.properties =
+  <span class="string">"setUp"</span>: (done) -&gt;
+    @classes = {} #serves <span class="keyword">as</span> <span class="class"><span class="keyword">class</span> <span class="title">container</span>
+    <span class="title">nail</span>.<span class="title">to</span> @<span class="title">classes</span>, '<span class="title">nail</span>.<span class="title">example</span>', <span class="title">MyClass</span>:
+      <span class="title">properties</span>:
+        <span class="title">foo</span>:    '<span class="title">bar</span>'
+    @<span class="title">instance</span> = <span class="title">new</span> @<span class="title">classes</span>.<span class="title">MyClass</span>()
+    <span class="title">done</span>()</code></pre>
+<h2>Get a Property</h2>
+<p>For each property nail will craete a setter/ getter function.
+To get the value of <code>foo</code> call <code>foo()</code> without an argument</p>
+<pre><code><span class="module"><span class="keyword">module</span>.exports.basics.properties["get value"] = <span class="container">(<span class="title">test</span>)</span> -&gt;
+  test.expect 1
+  test.equal @instance.foo<span class="container">()</span>, 'bar',
+    "calling foo without arguments return the value of foo"
+  test.done<span class="container">()</span></code></pre>
+<h2>Set Property</h2>
+<p>To change a property  we call the same function but pass the new value as first argument.</p>
+<pre><code><span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span><span class="transposed_variable">basics.</span><span class="keyword">properties</span><span class="matrix">["set value"]</span> = (test) -&gt;
+  <span class="transposed_variable">test.</span>expect <span class="number">1</span>
+  @<span class="transposed_variable">instance.</span>foo(<span class="string">'new value'</span>)
+  <span class="transposed_variable">test.</span>equal @<span class="transposed_variable">instance.</span>foo(), <span class="string">'new value'</span>
+  <span class="transposed_variable">test.</span>done()</code></pre>
+<h2>Generic get and set</h2>
+<p>The value of <code>foo</code> is stored in <code>_foo</code>. When calling the function <code>foo</code></p>
+<pre><code><span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span><span class="transposed_variable">basics.</span><span class="keyword">properties</span><span class="matrix">["helper property"]</span> = (test) -&gt;
+  <span class="transposed_variable">test.</span>expect <span class="number">1</span>
+  @<span class="transposed_variable">instance.</span>foo(<span class="string">'new value'</span>)
+  <span class="transposed_variable">test.</span>equal @<span class="transposed_variable">instance.</span>foo(), @<span class="transposed_variable">instance.</span>_foo
+  <span class="transposed_variable">test.</span>done()</code></pre>
+<p>All calls to the setter/getter are handled by the generic methods <code>get(name)</code>
+and <code>set(name, value)</code>. If we change one of those methods we can customize the
+behaviour of all get set operations.</p>
+<p>In this example we will replace <code>set</code> with a dummy so the object can not be changed.</p>
+<pre><code><span class="module"><span class="keyword">module</span>.exports.basics.properties["inmutable object"] = <span class="container">(<span class="title">test</span>)</span> -&gt;
+  test.expect 1
+  @instance.set = <span class="container">()</span>-&gt;
+  oldValue = @instance.foo<span class="container">()</span>
+  @instance.foo<span class="container">('<span class="title">useless</span> <span class="title">set</span> <span class="title">operation'</span>)</span>
+  test.equal @instance.foo<span class="container">()</span>, oldValue
+  test.done<span class="container">()</span></code></pre>
+<p>By overriding <code>get</code>and <code>set</code> you can change where the real values are stored or
+trigger events whenevr a vlue changes.</section><sextion></p>
+<h1>Methods</h1>
+<h2>About</h2>
+<p>This script demonstartes how to add methods to a nail class.
+It is written in literate coffee script and can be run as a nodeunit test.</p>
+<h2>Setup</h2>
+<pre><code><span class="title">nail</span> = require<span class="string"> '../lib/nail.js'</span>
+<span class="module"><span class="keyword">module</span>.exports.basics = {}</code></pre>
+<h2>Creating Methods:</h2>
+<p>The followingcode will create a class with the method <code>hello()</code>.</p>
+<pre><code>module.exports.basics.methods =
+  <span class="string">"setUp"</span>: (done) -&gt;
+    @classes = {} #serves <span class="keyword">as</span> <span class="class"><span class="keyword">class</span> <span class="title">container</span>
+    <span class="title">nail</span>.<span class="title">to</span> @<span class="title">classes</span>, '<span class="title">nail</span>.<span class="title">example</span>', <span class="title">MyClass</span>:
+      <span class="title">methods</span>:
+        <span class="title">hello</span>: -&gt; '<span class="title">hello</span> <span class="title">world</span>'
+    @<span class="title">instance</span> = <span class="title">new</span> @<span class="title">classes</span>.<span class="title">MyClass</span>()
+    <span class="title">done</span>()
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Nail maintained by <a href="https://github.com/noptic">noptic</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+  "<span class="title">calling</span> <span class="title">a</span> <span class="title">method</span>": (<span class="title">test</span>) -&gt;
+    <span class="title">test</span>.<span class="title">expect</span> 1
+    <span class="title">test</span>.<span class="title">equal</span> @<span class="title">instance</span>.<span class="title">hello</span>(), '<span class="title">hello</span> <span class="title">world</span>'
+    <span class="title">test</span>.<span class="title">done</span>()</code></pre>
+<h2>Oveloading:</h2>
+<p><code>nail-methods</code> allow method <a href="./method_overloading.coffee.md">overloading</a></section><sextion></p>
+<h1>Method Overloading</h1>
+<h2>About</h2>
+<p>This script demonstartes how to overload methods in a nail class.
+It is written in literate coffee script and is compiled into a <a href="../test/method_overloading_generated_test.js">test</a>.</p>
+<h2>Setup</h2>
+<pre><code><span class="title">nail</span> = require<span class="string"> '../lib/nail.js'</span>
+<span class="module"><span class="keyword">module</span>.exports.basics = {}</code></pre>
+<h2>Explicit Overloading</h2>
+<p>Nail supprts method overloading. One can provide different implementations,
+for different numbers of arguments
+ .
+The following code will return &#39;hello world&#39; if no argument is passed.
+If we pass &#39;sweety&#39; as the first argument it will return &#39;hello sweety&#39;.</p>
+<p>Instead of using a function to implement <code>hello</code> we simply use an object whith the
+number of arguments as proerty names and functions as a values.</p>
+<pre><code><span class="module"><span class="keyword">module</span>.exports.basics.overload =
+  "setUp": <span class="container">(<span class="title">done</span>)</span> -&gt;
+    @classes = {} #serves as class container
+    nail.to @classes, 'nail.example', MyOverloadClass:
+      methods:
+        hello:
+            0:-&gt; 'hello world'
+            1:<span class="container">(<span class="title">name</span>)</span>-&gt; "hello #{name}"
 
-    
+    @instance = new @classes.MyOverloadClass<span class="container">()</span>
+    done<span class="container">()</span>
 
-  </body>
+  "calling a overloaded method": <span class="container">(<span class="title">test</span>)</span> -&gt;
+    test.expect 2
+    test.equal @instance.hello<span class="container">()</span>, 'hello world'
+    test.equal @instance.hello<span class="container">('<span class="title">sweety'</span>)</span>, 'hello sweety'
+    test.done<span class="container">()</span></code></pre>
+<h2>Strict Argument Number</h2>
+<p>Calling <code>hello</code> with 2 or more arguments will cause an error because we only have
+implementations taking 1 or 0 arguments.</p>
+<p>While it is possible to create overloadsa which accept any numbers of arguments
+(as descibed in the next section) we can use
+these strict rules to create methods which require a fixed number of arguments.</p>
+<pre><code>module.exports.basics[<span class="string">'strict signature'</span>] =
+  <span class="string">"setUp"</span>: (done) -&gt;
+    @classes = {} #serves <span class="keyword">as</span> <span class="class"><span class="keyword">class</span> <span class="title">container</span>
+    <span class="title">nail</span>.<span class="title">to</span> @<span class="title">classes</span>, '<span class="title">nail</span>.<span class="title">example</span>', <span class="title">MyStrictClass</span>:
+      <span class="title">methods</span>:
+        <span class="title">login</span>:2:(<span class="title">name</span>, <span class="title">password</span>) -&gt;
+            #<span class="title">do</span> <span class="title">login</span> <span class="title">stuff</span> <span class="title">here</span>
+            <span class="title">return</span> <span class="title">true</span>
+
+    @<span class="title">instance</span> = <span class="title">new</span> @<span class="title">classes</span>.<span class="title">MyStrictClass</span>()
+    <span class="title">done</span>()
+
+  "<span class="title">calling</span> <span class="title">a</span> <span class="title">strict</span> <span class="title">method</span>": (<span class="title">test</span>) -&gt;
+    <span class="title">test</span>.<span class="title">expect</span> 3
+    <span class="title">test</span>.<span class="title">ok</span> @<span class="title">instance</span>.<span class="title">login</span>('<span class="title">master</span>', '<span class="title">bla573r</span>')
+    <span class="title">test</span>.<span class="title">throws</span> (()-&gt; @<span class="title">instance</span>.<span class="title">login</span>('<span class="title">master</span>')), <span class="title">Error</span>
+    <span class="title">test</span>.<span class="title">throws</span> (()-&gt; @<span class="title">instance</span>.<span class="title">login</span>('<span class="title">master</span>','<span class="title">bla573r</span>','2<span class="title">much</span>')), <span class="title">Error</span>
+    <span class="title">test</span>.<span class="title">done</span>()</code></pre>
+<h2>Default Implemenation</h2>
+<p>To support any number of arguments we can add an default implementtion. If the number of arguments passed to our method
+does not match any explicit implementation the <code>n</code>implementation will be used.</p>
+<pre><code><span class="module"><span class="keyword">module</span>.exports.basics['overload with default'] =
+  "setUp": <span class="container">(<span class="title">done</span>)</span> -&gt;
+    @classes = {} #serves as class container
+    nail.to @classes, 'nail.example', MyOverloadWithDefaultClass:
+      methods:
+        hello:
+            0:-&gt; 'hello world'
+            n:<span class="container">(<span class="title">name</span>)</span>-&gt; "hello #{name}"
+
+    @instance = new @classes.MyOverloadWithDefaultClass<span class="container">()</span>
+    done<span class="container">()</span>
+
+  "calling a overloaded method with default": <span class="container">(<span class="title">test</span>)</span> -&gt;
+    test.expect 3
+    test.equal @instance.hello<span class="container">()</span>, 'hello world'
+    test.equal @instance.hello<span class="container">('<span class="title">sweety'</span>)</span>, 'hello sweety'
+    test.equal @instance.hello<span class="container">('<span class="title">sweety'</span>,'<span class="title">rest'</span>,'<span class="title">is'</span>,'<span class="title">ignored'</span>)</span>, 'hello sweety'
+    test.done<span class="container">()</span></code></pre>
+</section>
+                </div>
+	</div>
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="js/foundation.min.js"></script>
+
+</body>
 </html>
+

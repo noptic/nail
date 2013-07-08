@@ -1,7 +1,5 @@
-Nail
-====
 About
------
+=====
 Nail is a cutomizable, framework-independent tool for js/coffee class creation.
 
 Every aspect of the class (properties, methods, inhitence) is handled by an
