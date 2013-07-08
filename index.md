@@ -165,23 +165,6 @@ The followingcode will create a class with the method `hello()`.
 
 Oveloading:
 -----------
-`nail-methods` allow method [overloading](./method_overloading.coffee.md)
-</section><section>
-Method Overloading
-==================
-About
------
-This script demonstartes how to overload methods in a nail class.
-It is written in literate coffee script and is compiled into a [test](../test/method_overloading_generated_test.js).
-
-Setup
------
-
-    nail = require '../lib/nail.js'
-    module.exports.basics = {}
-
-Explicit Overloading
---------------------
 Nail supprts method overloading. One can provide different implementations,
 for different numbers of arguments
  .
@@ -240,7 +223,6 @@ these strict rules to create methods which require a fixed number of arguments.
 
 Default Implemenation
 ---------------------
-
 To support any number of arguments we can add an default implementtion. If the number of arguments passed to our method
 does not match any explicit implementation the `n`implementation will be used.
 
@@ -262,10 +244,3 @@ does not match any explicit implementation the `n`implementation will be used.
         test.equal @instance.hello('sweety'), 'hello sweety'
         test.equal @instance.hello('sweety','rest','is','ignored'), 'hello sweety'
         test.done()
-
-
-
-
-
-
-

@@ -52,8 +52,7 @@ module.exports = (grunt) ->
         options:
           template: 'template.jst',
           markdownOptions:
-            gfm: true,
-            highlight: 'auto'
+            gfm: true
 
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'

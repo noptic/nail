@@ -8,7 +8,7 @@
   <title>NAIL - A modular class creation tool</title>
   <link rel="stylesheet" href="css/foundation.css" />
   <script src="js/vendor/custom.modernizr.js"></script>
-  <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/dark.min.css">
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/tomorrow-night-bright.min.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script>
     $(function(){
@@ -43,12 +43,12 @@
 independent module.</p>
 <p>All modules (incuding the core) can be replaced.</p>
 <p>Creating your custom version of nail is easy:</p>
-<pre><code><span class="module"><span class="keyword">module</span>.exports = require<span class="container">('<span class="title">nail</span>-<span class="title">core'</span>)</span>.use<span class="container">(
-    <span class="title">require</span> '<span class="title">nail</span>-<span class="title">extend'</span>
-    <span class="title">require</span> '<span class="title">nail</span>-<span class="title">properties'</span>
-    <span class="title">require</span> '<span class="title">nail</span>-<span class="title">methods'</span>
-    <span class="title">require</span> './<span class="title">my</span>/<span class="title">awesome</span>/<span class="title">module</span>.<span class="title">js'</span>
-)</span></code></pre>
+<pre><code>module.exports = require(&#39;nail-core&#39;).use(
+    require &#39;nail-extend&#39;
+    require &#39;nail-properties&#39;
+    require &#39;nail-methods&#39;
+    require &#39;./my/awesome/module.js&#39;
+)</code></pre>
 <p>This package contains the most common modules (&#39;nail-extend&#39;,&#39;nail-properties&#39;, &#39;nail-methods&#39;)</p>
 <h2>Features</h2>
 <ul>
@@ -62,80 +62,80 @@ independent module.</p>
 <p>You can find in depth descriptions on the features in the <a href="../../tree/master/docs">docs</a> directory.</p>
 <h2>Example</h2>
 <p>Let us define some classes:</p>
-<pre><code>nail = require('nail')
-nail.<span class="keyword">to</span> exports, 'myPakage', MyParent:
+<pre><code>nail = require(&#39;nail&#39;)
+nail.to exports, &#39;myPakage&#39;, MyParent:
     methods:
         init: (properties) -&gt;
-            <span class="keyword">for</span> <span class="property">name</span>,value <span class="keyword">of</span> properties
-                @[<span class="property">name</span>] value
-        hello: -&gt; 'hello'
+            for name,value of properties
+                @[name] value
+        hello: -&gt; &#39;hello&#39;
 
-nail.<span class="keyword">to</span> exports, 'myPackage', MyChild:
+nail.to exports, &#39;myPackage&#39;, MyChild:
     extend: exports.MyParent
     prperties:
-        <span class="property">name</span>:   'anon'
+        name:   &#39;anon&#39;
     methods:
         hello:
-            <span class="number">0</span>: -&gt; @hello(@<span class="property">name</span>)<span class="string">"
-            n: (otherName) -&gt; "</span>hello <span class="comment">#{name}"</span>
+            0: -&gt; @hello(@name)&quot;
+            n: (otherName) -&gt; &quot;hello #{name}&quot;
 
-bob = new exports.Mychild(<span class="property">name</span>: 'Bob')
-bob.hello() <span class="comment">#"hello Bob"</span>
-bob.<span class="property">name</span> 'Holy Bob'
-bob.hello() <span class="comment">#"hello Holly Bob"</span>
-bob.hello('stranger') <span class="comment">#"hello stranger"</span></code></pre>
+bob = new exports.Mychild(name: &#39;Bob&#39;)
+bob.hello() #&quot;hello Bob&quot;
+bob.name &#39;Holy Bob&#39;
+bob.hello() #&quot;hello Holly Bob&quot;
+bob.hello(&#39;stranger&#39;) #&quot;hello stranger&quot;</code></pre>
 <p></section><section></p>
 <h1>Properties</h1>
 <h2>About</h2>
 <p>This script demonstartes how to add properties to a nail class.
 It is written in literate coffee script and can be run as a nodeunit test.</p>
 <h2>Setup</h2>
-<pre><code>nail = require <span class="string">'../lib/nail.js'</span>
-<span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span>basics = <span class="cell">{}</span>
-<span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span><span class="transposed_variable">basics.</span><span class="keyword">properties</span> = <span class="cell">{}</span></code></pre>
+<pre><code>nail = require &#39;../lib/nail.js&#39;
+module.exports.basics = {}
+module.exports.basics.properties = {}</code></pre>
 <h2>Creating Properties</h2>
 <p>The followingcode will create a class with the property <code>foo</code>.</p>
 <pre><code>module.exports.basics.properties =
-  <span class="string">"setUp"</span>: (done) -&gt;
-    @classes = {} #serves <span class="keyword">as</span> <span class="class"><span class="keyword">class</span> <span class="title">container</span>
-    <span class="title">nail</span>.<span class="title">to</span> @<span class="title">classes</span>, '<span class="title">nail</span>.<span class="title">example</span>', <span class="title">MyClass</span>:
-      <span class="title">properties</span>:
-        <span class="title">foo</span>:    '<span class="title">bar</span>'
-    @<span class="title">instance</span> = <span class="title">new</span> @<span class="title">classes</span>.<span class="title">MyClass</span>()
-    <span class="title">done</span>()</code></pre>
+  &quot;setUp&quot;: (done) -&gt;
+    @classes = {} #serves as class container
+    nail.to @classes, &#39;nail.example&#39;, MyClass:
+      properties:
+        foo:    &#39;bar&#39;
+    @instance = new @classes.MyClass()
+    done()</code></pre>
 <h2>Get a Property</h2>
 <p>For each property nail will craete a setter/ getter function.
 To get the value of <code>foo</code> call <code>foo()</code> without an argument</p>
-<pre><code><span class="module"><span class="keyword">module</span>.exports.basics.properties["get value"] = <span class="container">(<span class="title">test</span>)</span> -&gt;
+<pre><code>module.exports.basics.properties[&quot;get value&quot;] = (test) -&gt;
   test.expect 1
-  test.equal @instance.foo<span class="container">()</span>, 'bar',
-    "calling foo without arguments return the value of foo"
-  test.done<span class="container">()</span></code></pre>
+  test.equal @instance.foo(), &#39;bar&#39;,
+    &quot;calling foo without arguments return the value of foo&quot;
+  test.done()</code></pre>
 <h2>Set Property</h2>
 <p>To change a property  we call the same function but pass the new value as first argument.</p>
-<pre><code><span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span><span class="transposed_variable">basics.</span><span class="keyword">properties</span><span class="matrix">["set value"]</span> = (test) -&gt;
-  <span class="transposed_variable">test.</span>expect <span class="number">1</span>
-  @<span class="transposed_variable">instance.</span>foo(<span class="string">'new value'</span>)
-  <span class="transposed_variable">test.</span>equal @<span class="transposed_variable">instance.</span>foo(), <span class="string">'new value'</span>
-  <span class="transposed_variable">test.</span>done()</code></pre>
+<pre><code>module.exports.basics.properties[&quot;set value&quot;] = (test) -&gt;
+  test.expect 1
+  @instance.foo(&#39;new value&#39;)
+  test.equal @instance.foo(), &#39;new value&#39;
+  test.done()</code></pre>
 <h2>Generic get and set</h2>
 <p>The value of <code>foo</code> is stored in <code>_foo</code>. When calling the function <code>foo</code></p>
-<pre><code><span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span><span class="transposed_variable">basics.</span><span class="keyword">properties</span><span class="matrix">["helper property"]</span> = (test) -&gt;
-  <span class="transposed_variable">test.</span>expect <span class="number">1</span>
-  @<span class="transposed_variable">instance.</span>foo(<span class="string">'new value'</span>)
-  <span class="transposed_variable">test.</span>equal @<span class="transposed_variable">instance.</span>foo(), @<span class="transposed_variable">instance.</span>_foo
-  <span class="transposed_variable">test.</span>done()</code></pre>
+<pre><code>module.exports.basics.properties[&quot;helper property&quot;] = (test) -&gt;
+  test.expect 1
+  @instance.foo(&#39;new value&#39;)
+  test.equal @instance.foo(), @instance._foo
+  test.done()</code></pre>
 <p>All calls to the setter/getter are handled by the generic methods <code>get(name)</code>
 and <code>set(name, value)</code>. If we change one of those methods we can customize the
 behaviour of all get set operations.</p>
 <p>In this example we will replace <code>set</code> with a dummy so the object can not be changed.</p>
-<pre><code><span class="module"><span class="keyword">module</span>.exports.basics.properties["inmutable object"] = <span class="container">(<span class="title">test</span>)</span> -&gt;
+<pre><code>module.exports.basics.properties[&quot;inmutable object&quot;] = (test) -&gt;
   test.expect 1
-  @instance.set = <span class="container">()</span>-&gt;
-  oldValue = @instance.foo<span class="container">()</span>
-  @instance.foo<span class="container">('<span class="title">useless</span> <span class="title">set</span> <span class="title">operation'</span>)</span>
-  test.equal @instance.foo<span class="container">()</span>, oldValue
-  test.done<span class="container">()</span></code></pre>
+  @instance.set = ()-&gt;
+  oldValue = @instance.foo()
+  @instance.foo(&#39;useless set operation&#39;)
+  test.equal @instance.foo(), oldValue
+  test.done()</code></pre>
 <p>By overriding <code>get</code>and <code>set</code> you can change where the real values are stored or
 trigger events whenevr a vlue changes.
 </section><section></p>
@@ -144,34 +144,24 @@ trigger events whenevr a vlue changes.
 <p>This script demonstartes how to add methods to a nail class.
 It is written in literate coffee script and can be run as a nodeunit test.</p>
 <h2>Setup</h2>
-<pre><code><span class="title">nail</span> = require<span class="string"> '../lib/nail.js'</span>
-<span class="module"><span class="keyword">module</span>.exports.basics = {}</code></pre>
+<pre><code>nail = require &#39;../lib/nail.js&#39;
+module.exports.basics = {}</code></pre>
 <h2>Creating Methods:</h2>
 <p>The followingcode will create a class with the method <code>hello()</code>.</p>
 <pre><code>module.exports.basics.methods =
-  <span class="string">"setUp"</span>: (done) -&gt;
-    @classes = {} #serves <span class="keyword">as</span> <span class="class"><span class="keyword">class</span> <span class="title">container</span>
-    <span class="title">nail</span>.<span class="title">to</span> @<span class="title">classes</span>, '<span class="title">nail</span>.<span class="title">example</span>', <span class="title">MyClass</span>:
-      <span class="title">methods</span>:
-        <span class="title">hello</span>: -&gt; '<span class="title">hello</span> <span class="title">world</span>'
-    @<span class="title">instance</span> = <span class="title">new</span> @<span class="title">classes</span>.<span class="title">MyClass</span>()
-    <span class="title">done</span>()
+  &quot;setUp&quot;: (done) -&gt;
+    @classes = {} #serves as class container
+    nail.to @classes, &#39;nail.example&#39;, MyClass:
+      methods:
+        hello: -&gt; &#39;hello world&#39;
+    @instance = new @classes.MyClass()
+    done()
 
-  "<span class="title">calling</span> <span class="title">a</span> <span class="title">method</span>": (<span class="title">test</span>) -&gt;
-    <span class="title">test</span>.<span class="title">expect</span> 1
-    <span class="title">test</span>.<span class="title">equal</span> @<span class="title">instance</span>.<span class="title">hello</span>(), '<span class="title">hello</span> <span class="title">world</span>'
-    <span class="title">test</span>.<span class="title">done</span>()</code></pre>
+  &quot;calling a method&quot;: (test) -&gt;
+    test.expect 1
+    test.equal @instance.hello(), &#39;hello world&#39;
+    test.done()</code></pre>
 <h2>Oveloading:</h2>
-<p><code>nail-methods</code> allow method <a href="./method_overloading.coffee.md">overloading</a>
-</section><section></p>
-<h1>Method Overloading</h1>
-<h2>About</h2>
-<p>This script demonstartes how to overload methods in a nail class.
-It is written in literate coffee script and is compiled into a <a href="../test/method_overloading_generated_test.js">test</a>.</p>
-<h2>Setup</h2>
-<pre><code><span class="title">nail</span> = require<span class="string"> '../lib/nail.js'</span>
-<span class="module"><span class="keyword">module</span>.exports.basics = {}</code></pre>
-<h2>Explicit Overloading</h2>
 <p>Nail supprts method overloading. One can provide different implementations,
 for different numbers of arguments
  .
@@ -179,68 +169,68 @@ The following code will return &#39;hello world&#39; if no argument is passed.
 If we pass &#39;sweety&#39; as the first argument it will return &#39;hello sweety&#39;.</p>
 <p>Instead of using a function to implement <code>hello</code> we simply use an object whith the
 number of arguments as proerty names and functions as a values.</p>
-<pre><code><span class="module"><span class="keyword">module</span>.exports.basics.overload =
-  "setUp": <span class="container">(<span class="title">done</span>)</span> -&gt;
+<pre><code>module.exports.basics.overload =
+  &quot;setUp&quot;: (done) -&gt;
     @classes = {} #serves as class container
-    nail.to @classes, 'nail.example', MyOverloadClass:
+    nail.to @classes, &#39;nail.example&#39;, MyOverloadClass:
       methods:
         hello:
-            0:-&gt; 'hello world'
-            1:<span class="container">(<span class="title">name</span>)</span>-&gt; "hello #{name}"
+            0:-&gt; &#39;hello world&#39;
+            1:(name)-&gt; &quot;hello #{name}&quot;
 
-    @instance = new @classes.MyOverloadClass<span class="container">()</span>
-    done<span class="container">()</span>
+    @instance = new @classes.MyOverloadClass()
+    done()
 
-  "calling a overloaded method": <span class="container">(<span class="title">test</span>)</span> -&gt;
+  &quot;calling a overloaded method&quot;: (test) -&gt;
     test.expect 2
-    test.equal @instance.hello<span class="container">()</span>, 'hello world'
-    test.equal @instance.hello<span class="container">('<span class="title">sweety'</span>)</span>, 'hello sweety'
-    test.done<span class="container">()</span></code></pre>
+    test.equal @instance.hello(), &#39;hello world&#39;
+    test.equal @instance.hello(&#39;sweety&#39;), &#39;hello sweety&#39;
+    test.done()</code></pre>
 <h2>Strict Argument Number</h2>
 <p>Calling <code>hello</code> with 2 or more arguments will cause an error because we only have
 implementations taking 1 or 0 arguments.</p>
 <p>While it is possible to create overloadsa which accept any numbers of arguments
 (as descibed in the next section) we can use
 these strict rules to create methods which require a fixed number of arguments.</p>
-<pre><code>module.exports.basics[<span class="string">'strict signature'</span>] =
-  <span class="string">"setUp"</span>: (done) -&gt;
-    @classes = {} #serves <span class="keyword">as</span> <span class="class"><span class="keyword">class</span> <span class="title">container</span>
-    <span class="title">nail</span>.<span class="title">to</span> @<span class="title">classes</span>, '<span class="title">nail</span>.<span class="title">example</span>', <span class="title">MyStrictClass</span>:
-      <span class="title">methods</span>:
-        <span class="title">login</span>:2:(<span class="title">name</span>, <span class="title">password</span>) -&gt;
-            #<span class="title">do</span> <span class="title">login</span> <span class="title">stuff</span> <span class="title">here</span>
-            <span class="title">return</span> <span class="title">true</span>
+<pre><code>module.exports.basics[&#39;strict signature&#39;] =
+  &quot;setUp&quot;: (done) -&gt;
+    @classes = {} #serves as class container
+    nail.to @classes, &#39;nail.example&#39;, MyStrictClass:
+      methods:
+        login:2:(name, password) -&gt;
+            #do login stuff here
+            return true
 
-    @<span class="title">instance</span> = <span class="title">new</span> @<span class="title">classes</span>.<span class="title">MyStrictClass</span>()
-    <span class="title">done</span>()
+    @instance = new @classes.MyStrictClass()
+    done()
 
-  "<span class="title">calling</span> <span class="title">a</span> <span class="title">strict</span> <span class="title">method</span>": (<span class="title">test</span>) -&gt;
-    <span class="title">test</span>.<span class="title">expect</span> 3
-    <span class="title">test</span>.<span class="title">ok</span> @<span class="title">instance</span>.<span class="title">login</span>('<span class="title">master</span>', '<span class="title">bla573r</span>')
-    <span class="title">test</span>.<span class="title">throws</span> (()-&gt; @<span class="title">instance</span>.<span class="title">login</span>('<span class="title">master</span>')), <span class="title">Error</span>
-    <span class="title">test</span>.<span class="title">throws</span> (()-&gt; @<span class="title">instance</span>.<span class="title">login</span>('<span class="title">master</span>','<span class="title">bla573r</span>','2<span class="title">much</span>')), <span class="title">Error</span>
-    <span class="title">test</span>.<span class="title">done</span>()</code></pre>
+  &quot;calling a strict method&quot;: (test) -&gt;
+    test.expect 3
+    test.ok @instance.login(&#39;master&#39;, &#39;bla573r&#39;)
+    test.throws (()-&gt; @instance.login(&#39;master&#39;)), Error
+    test.throws (()-&gt; @instance.login(&#39;master&#39;,&#39;bla573r&#39;,&#39;2much&#39;)), Error
+    test.done()</code></pre>
 <h2>Default Implemenation</h2>
 <p>To support any number of arguments we can add an default implementtion. If the number of arguments passed to our method
 does not match any explicit implementation the <code>n</code>implementation will be used.</p>
-<pre><code><span class="module"><span class="keyword">module</span>.exports.basics['overload with default'] =
-  "setUp": <span class="container">(<span class="title">done</span>)</span> -&gt;
+<pre><code>module.exports.basics[&#39;overload with default&#39;] =
+  &quot;setUp&quot;: (done) -&gt;
     @classes = {} #serves as class container
-    nail.to @classes, 'nail.example', MyOverloadWithDefaultClass:
+    nail.to @classes, &#39;nail.example&#39;, MyOverloadWithDefaultClass:
       methods:
         hello:
-            0:-&gt; 'hello world'
-            n:<span class="container">(<span class="title">name</span>)</span>-&gt; "hello #{name}"
+            0:-&gt; &#39;hello world&#39;
+            n:(name)-&gt; &quot;hello #{name}&quot;
 
-    @instance = new @classes.MyOverloadWithDefaultClass<span class="container">()</span>
-    done<span class="container">()</span>
+    @instance = new @classes.MyOverloadWithDefaultClass()
+    done()
 
-  "calling a overloaded method with default": <span class="container">(<span class="title">test</span>)</span> -&gt;
+  &quot;calling a overloaded method with default&quot;: (test) -&gt;
     test.expect 3
-    test.equal @instance.hello<span class="container">()</span>, 'hello world'
-    test.equal @instance.hello<span class="container">('<span class="title">sweety'</span>)</span>, 'hello sweety'
-    test.equal @instance.hello<span class="container">('<span class="title">sweety'</span>,'<span class="title">rest'</span>,'<span class="title">is'</span>,'<span class="title">ignored'</span>)</span>, 'hello sweety'
-    test.done<span class="container">()</span></code></pre>
+    test.equal @instance.hello(), &#39;hello world&#39;
+    test.equal @instance.hello(&#39;sweety&#39;), &#39;hello sweety&#39;
+    test.equal @instance.hello(&#39;sweety&#39;,&#39;rest&#39;,&#39;is&#39;,&#39;ignored&#39;), &#39;hello sweety&#39;
+    test.done()</code></pre>
 </section>
                 </div>
 	</div>
