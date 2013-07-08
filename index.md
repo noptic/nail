@@ -55,7 +55,8 @@ Let us define some classes:
     bob.hello() #"hello Bob"
     bob.name 'Holy Bob'
     bob.hello() #"hello Holly Bob"
-    bob.hello('stranger') #"hello stranger"</section><sextion>
+    bob.hello('stranger') #"hello stranger"
+</section><section>
 Properties
 ===========
 About
@@ -129,7 +130,8 @@ In this example we will replace `set` with a dummy so the object can not be chan
       test.done()
 
 By overriding `get`and `set` you can change where the real values are stored or
-trigger events whenevr a vlue changes.</section><sextion>
+trigger events whenevr a vlue changes.
+</section><section>
 Methods
 ===========
 About
@@ -163,7 +165,8 @@ The followingcode will create a class with the method `hello()`.
 
 Oveloading:
 -----------
-`nail-methods` allow method [overloading](./method_overloading.coffee.md)</section><sextion>
+`nail-methods` allow method [overloading](./method_overloading.coffee.md)
+</section><section>
 Method Overloading
 ==================
 About

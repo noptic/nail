@@ -32,7 +32,7 @@ module.exports = (grunt) ->
 
     concat:
       options:
-        separator: '</section><sextion>\n'
+        separator: '\n</section><section>\n'
       docs:
         src:[
           'README.md'

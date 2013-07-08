@@ -17,20 +17,24 @@
       $(document).foundation();
     })
   </script>
+  <style>
+  header{background: url(images/lined.png) #2b2; padding: 1em; box-shadow: 0px 0px 32px 0px #000}
+  section h1{border-bottom: dotted #ccc 2px}
+  section {margin-bottom: 3em}
+  </style>
 </head>
 <body>
-
+  <header>
 	<div class="row">
                 <div class="large-2 columns">
                   <img src="images/nail.png" />
                 </div>
-		<div class="large-10 columns">
-			<h1>NAIL</h1>
-			<p>A modular class creation tool</p>
-			<hr />
-		</div>
+		<hgroup class="large-10 columns">
+                  <h1 >NAIL</h1>
+                  <h2>A modular class creation tool</h2>
+                </hgroup>
 	</div>
-
+  </header>
 	<div class="row">
 		<div class="large-10 columns section-container auto" data-section>
                   <section><%=content%></section>
