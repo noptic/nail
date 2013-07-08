@@ -1,0 +1,45 @@
+{
+    "name": "nail",
+    "description": "Nail is a cutomizable, framework-independent tool for js/coffee class creation.",
+    "version": "0.1.0alpha1",
+    "homepage": "https://github.com/noptic/nail",
+    "author": {
+        "name": "Oliver Anan",
+        "email": "oliver@ananit.de"
+    },
+    "keywords": ["nail", "class", "util", "class creation"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/noptic/nail.git"
+    },
+    "bugs": {
+        "url": "https://github.com/noptic/nail/issues"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/noptic/nail/blob/master/LICENSE-MIT"
+        }
+    ],
+    "main": "lib/nail",
+    "engines": {
+        "node": ">= 0.6.0"
+    },
+    "scripts": {
+        "test": "grunt nodeunit"
+    },
+    "dependencies": {
+        "nail-core": "0.1.0alpha1",
+        "nail-extend": "0.1.0alpha1",
+        "nail-properties": "0.1.0alpha2",
+        "nail-methods": "0.1.0alpha1"
+    },
+    "devDependencies": {
+        "grunt-contrib-coffee": "0.7.0",
+        "grunt-contrib-concat": "0.1.2rc6",
+        "grunt-contrib-uglify": "0.1.1rc6",
+        "grunt-contrib-nodeunit": "0.1.2rc6",
+        "grunt-contrib-watch": "0.2.0rc5",
+        "grunt": "0.4.0rc7"
+    }
+}
