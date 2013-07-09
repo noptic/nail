@@ -32,7 +32,10 @@ module.exports = (grunt) ->
 
     concat:
       options:
-        separator: '\n</section><section>\n'
+        process: (src, filename) ->
+          src = src.trim()
+          return "\n<section id='#{filename}'>#{src}</section>\n"
+
       docs:
         src:[
           'README.md'

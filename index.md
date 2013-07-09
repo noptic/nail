@@ -56,7 +56,6 @@ Let us define some classes:
     bob.name 'Holy Bob'
     bob.hello() #"hello Holly Bob"
     bob.hello('stranger') #"hello stranger"
-</section><section>
 Properties
 ===========
 About
@@ -131,7 +130,6 @@ In this example we will replace `set` with a dummy so the object can not be chan
 
 By overriding `get`and `set` you can change where the real values are stored or
 trigger events whenevr a vlue changes.
-</section><section>
 Methods
 ===========
 About
