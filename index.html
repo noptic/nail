@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width" />
   <title>NAIL - A modular class creation tool</title>
   <link rel="stylesheet" href="css/foundation.css" />
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700' rel='stylesheet' type='text/css'>
   <script src="js/vendor/custom.modernizr.js"></script>
   <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/tomorrow-night-bright.min.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -18,7 +19,14 @@
     })
   </script>
   <style>
-  header{background: url(images/lined.png) #2b2; padding: 1em; box-shadow: 0px 0px 32px 0px #000}
+  body{font-family: 'Roboto', sans-serif;}
+  header{
+    background: url(images/lined.png) #444;
+    padding: 1em;
+    color: #fff;
+    box-shadow: 0px 0px 32px 2px #000;
+    font-size: 1.1em;
+  }
   section h1{border-bottom: dotted #ccc 2px}
   section {margin-bottom: 3em}
   </style>
@@ -31,13 +39,15 @@
                 </div>
 		<hgroup class="large-10 columns">
                   <h1 >NAIL</h1>
-                  <h2>A modular class creation tool</h2>
+                  <h2>Simple Modular Class Creation</h2>
                 </hgroup>
 	</div>
   </header>
 	<div class="row">
-		<div class="large-10 columns section-container auto" data-section>
-                  <h1>About</h1>
+		<div class="section-container auto" data-section>
+                  
+<section class='section' id='./README.md'>
+<h1>About</h1>
 <p>Nail is a cutomizable, framework-independent tool for js/coffee class creation.</p>
 <p>Every aspect of the class (properties, methods, inhitence) is handled by an
 independent module.</p>
@@ -84,6 +94,9 @@ bob.hello() #&quot;hello Bob&quot;
 bob.name &#39;Holy Bob&#39;
 bob.hello() #&quot;hello Holly Bob&quot;
 bob.hello(&#39;stranger&#39;) #&quot;hello stranger&quot;</code></pre>
+
+</section>
+<section class='section' id='./docs/properties.coffee.md'>
 <h1>Properties</h1>
 <h2>About</h2>
 <p>This script demonstartes how to add properties to a nail class.
@@ -137,6 +150,9 @@ behaviour of all get set operations.</p>
   test.done()</code></pre>
 <p>By overriding <code>get</code>and <code>set</code> you can change where the real values are stored or
 trigger events whenevr a vlue changes.</p>
+
+</section>
+<section class='section' id='./docs/methods.coffee.md'>
 <h1>Methods</h1>
 <h2>About</h2>
 <p>This script demonstartes how to add methods to a nail class.
@@ -230,6 +246,7 @@ does not match any explicit implementation the <code>n</code>implementation will
     test.equal @instance.hello(&#39;sweety&#39;,&#39;rest&#39;,&#39;is&#39;,&#39;ignored&#39;), &#39;hello sweety&#39;
     test.done()</code></pre>
 
+</section>
                 </div>
 	</div>
 

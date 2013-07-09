@@ -1,3 +1,5 @@
+
+<section id='./README.md'>
 About
 =====
 Nail is a cutomizable, framework-independent tool for js/coffee class creation.
@@ -56,6 +58,8 @@ Let us define some classes:
     bob.name 'Holy Bob'
     bob.hello() #"hello Holly Bob"
     bob.hello('stranger') #"hello stranger"
+</section>
+<section id='./docs/properties.coffee.md'>
 Properties
 ===========
 About
@@ -130,6 +134,8 @@ In this example we will replace `set` with a dummy so the object can not be chan
 
 By overriding `get`and `set` you can change where the real values are stored or
 trigger events whenevr a vlue changes.
+</section>
+<section id='./docs/methods.coffee.md'>
 Methods
 ===========
 About
@@ -242,3 +248,4 @@ does not match any explicit implementation the `n`implementation will be used.
         test.equal @instance.hello('sweety'), 'hello sweety'
         test.equal @instance.hello('sweety','rest','is','ignored'), 'hello sweety'
         test.done()
+</section>

@@ -33,17 +33,9 @@ module.exports = (grunt) ->
     concat:
       options:
         process: (src, filename) ->
+          grunt.log.writeln src
           src = src.trim()
-          return "\n<section id='#{filename}'>#{src}</section>\n"
-
-      docs:
-        src:[
-          'README.md'
-          'docs/properties.coffee.md'
-          'docs/methods.coffee.md'
-          'docs/method_overloading.coffee.md'
-          ]
-        dest: 'index.md'
+          return "\n<section style='backgrond: red' d='#{filename}'>#{src}</section>\n"
     markdown:
       all:
         files: [
@@ -65,3 +57,19 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-markdown'
   grunt.registerTask 'default', ['coffee', 'nodeunit']
   grunt.registerTask 'page', ['coffee', 'nodeunit', 'concat', 'markdown']
+  grunt.registerTask 'gh-pages', 'a sampletask', () ->
+    fs = require 'fs'
+    _ = require 'underscore'
+    marked = require( "marked" )
+    result = ''
+    for file in [
+      './README.md'
+      './docs/properties.coffee.md'
+      './docs/methods.coffee.md'
+      ]
+      fragment = "\n<section class='section' id='#{file}'>\n#{marked(fs.readFileSync(file).toString().trim())}\n</section>"
+      #fragment = fragment.replace '<h1', '<h1 class="title" data-section-title'
+      #fragment = fragment.replace '</h1>', '</h1><div class="content data-section-content">'
+      result += fragment
+    template = _.template (fs.readFileSync 'template.jst').toString()
+    fs.writeFileSync('index.html', template content: result)
