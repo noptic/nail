@@ -9,12 +9,6 @@ module.exports = (grunt) ->
         src: ['*.coffee']
         dest: 'lib'
         ext: '.js'
-      create_js_examples:
-        expand: true
-        cwd: 'docs'
-        src: ['*.coffee.md']
-        dest: 'test'
-        ext: '_generated_test.js'
 
     nodeunit:
       files: ['test/**/*_test.coffee','test/**/*_test.js']
@@ -34,4 +28,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-nodeunit'
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
-  grunt.registerTask 'default', ['coffee', 'nodeunit']
+  grunt.registerTask 'default', ['coffee']

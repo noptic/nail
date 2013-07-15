@@ -1,7 +1,7 @@
 {
   "name": "nail",
   "description": "Nail is a cutomizable, framework-independent tool for js/coffee class creation.",
-  "version": "0.1.0alpha2",
+  "version": "0.1.0alpha3",
   "homepage": "https://github.com/noptic/nail",
   "author": {
     "name": "Oliver Anan",
@@ -29,7 +29,7 @@
     "test": "grunt nodeunit"
   },
   "dependencies": {
-    "nail-core": "0.1.0alpha1",
+    "nail-core": "0.1.0alpha3",
     "nail-extend": "0.1.0alpha1",
     "nail-properties": "0.1.0alpha3",
     "nail-methods": "0.1.0alpha1"

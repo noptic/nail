@@ -9,25 +9,19 @@ Setup
 -----
 
     nail = require '../lib/nail.js'
-    module.exports.basics = {}
 
 Creating Methods:
 -----------------
 The followingcode will create a class with the method `hello()`.
 
-    module.exports.basics.methods =
-      "setUp": (done) ->
-        @classes = {} #serves as class container
-        nail.to @classes, 'nail.example', MyClass:
-          methods:
-            hello: -> 'hello world'
-        @instance = new @classes.MyClass()
-        done()
-
-      "calling a method": (test) ->
-        test.expect 1
-        test.equal @instance.hello(), 'hello world'
-        test.done()
+    exports["calling a method"] = (test) ->
+      test.expect 1
+      classes = nail.to MyClass:
+        methods:
+          hello: -> 'hello world'
+      instance = new classes.MyClass()
+      test.equal instance.hello(), 'hello world'
+      test.done()
 
 Oveloading:
 -----------
@@ -40,23 +34,18 @@ If we pass 'sweety' as the first argument it will return 'hello sweety'.
 Instead of using a function to implement `hello` we simply use an object whith the
 number of arguments as proerty names and functions as a values.
 
-    module.exports.basics.overload =
-      "setUp": (done) ->
-        @classes = {} #serves as class container
-        nail.to @classes, 'nail.example', MyOverloadClass:
-          methods:
-            hello:
-                0:-> 'hello world'
-                1:(name)-> "hello #{name}"
+    exports["overload"] = (test) ->
+      test.expect 2
+      classes = nail.to MyOverloadClass:
+        methods:
+          hello:
+            0:-> 'hello world'
+            1:(name)-> "hello #{name}"
 
-        @instance = new @classes.MyOverloadClass()
-        done()
-
-      "calling a overloaded method": (test) ->
-        test.expect 2
-        test.equal @instance.hello(), 'hello world'
-        test.equal @instance.hello('sweety'), 'hello sweety'
-        test.done()
+      instance = new classes.MyOverloadClass()
+      test.equal instance.hello(), 'hello world'
+      test.equal instance.hello('sweety'), 'hello sweety'
+      test.done()
 
 Strict Argument Number
 ----------------------
@@ -68,24 +57,21 @@ While it is possible to create overloadsa which accept any numbers of arguments
 (as descibed in the next section) we can use
 these strict rules to create methods which require a fixed number of arguments.
 
-    module.exports.basics['strict signature'] =
-      "setUp": (done) ->
-        @classes = {} #serves as class container
-        nail.to @classes, 'nail.example', MyStrictClass:
-          methods:
-            login:2:(name, password) ->
-                #do login stuff here
-                return true
+    exports.['strict signature'] =
+      test.expect 3
+      classes = {} #serves as class container
+      nail.to @classes, 'nail.example', MyStrictClass:
+        methods:
+          login:2:(name, password) ->
+            #do login stuff here
+            return true
 
-        @instance = new @classes.MyStrictClass()
-        done()
+      instance = new classes.MyStrictClass()
 
-      "calling a strict method": (test) ->
-        test.expect 3
-        test.ok @instance.login('master', 'bla573r')
-        test.throws (()-> @instance.login('master')), Error
-        test.throws (()-> @instance.login('master','bla573r','2much')), Error
-        test.done()
+      test.ok @instance.login('master', 'bla573r')
+      test.throws (()-> @instance.login('master')), Error
+      test.throws (()-> @instance.login('master','bla573r','2much')), Error
+      test.done()
 
 Default Implemenation
 ---------------------
