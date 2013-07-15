@@ -62,14 +62,25 @@ module.exports = (grunt) ->
     _ = require 'underscore'
     marked = require( "marked" )
     result = ''
+    nav = ''
+    h1Pattern = /<h1>(.*)<\/h1>/
     for file in [
       './README.md'
       './docs/properties.coffee.md'
       './docs/methods.coffee.md'
       ]
-      fragment = "\n<section class='section' id='#{file}'>\n#{marked(fs.readFileSync(file).toString().trim())}\n</section>"
-      #fragment = fragment.replace '<h1', '<h1 class="title" data-section-title'
-      #fragment = fragment.replace '</h1>', '</h1><div class="content data-section-content">'
-      result += fragment
+      fragment = marked(fs.readFileSync(file).toString().trim())
+      h1 = h1Pattern.exec fragment
+      if h1
+        id = h1[1].replace(' ','-').toLowerCase()
+        nav += "<li><a href='##{id}'>#{h1[1]}</a></li>\n"
+        grunt.log.writeln h1[1]
+      else
+        id = file
+      result += "\n<section class='section' id='#{id}'>\n#{fragment}\n</section>"
     template = _.template (fs.readFileSync 'template.jst').toString()
-    fs.writeFileSync('index.html', template content: result)
+    fs.writeFileSync('index.html', template
+      content: result,
+      navigation: nav
+    )
+    grunt.log.writeln nav

@@ -7,56 +7,68 @@
   <meta name="viewport" content="width=device-width" />
   <title>NAIL - A modular class creation tool</title>
   <link rel="stylesheet" href="css/foundation.css" />
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700' rel='stylesheet' type='text/css'>
-  <script src="js/vendor/custom.modernizr.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700' rel='stylesheet' type='text/css'>
+  <!--<script src="js/vendor/custom.modernizr.js"></script>
   <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/tomorrow-night-bright.min.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
   <script>
     $(function(){
-      $('code').attr('class','coffeescript');
-      $.getScript('"http://yandex.st/highlightjs/7.3/highlight.min.js"');
       $(document).foundation();
+      hljs.initHighlighting();
     })
-  </script>
+  </script>-->
   <style>
   body{font-family: 'Roboto', sans-serif;}
   header{
     background: url(images/lined.png) #444;
-    padding: 1em;
-    color: #fff;
+
     box-shadow: 0px 0px 32px 2px #000;
-    font-size: 1.1em;
+  }
+  header h1, header h2{
+    color: #fff;
   }
   section h1{border-bottom: dotted #ccc 2px}
   section {margin-bottom: 3em}
   </style>
 </head>
 <body>
+<!--<div class="contain-to-grid sticky" style="position: fixed; z-index: 100;">
+      <nav class="top-bar">
+        <ul class="title-area">
+          <li class="name"><a href='#'></a></li>
+        </ul>
+        <section class="top-bar-section">
+          <ul class="left">
+            <%=navigation%>
+          </ul>
+        </section>
+      </nav>
+    </div>-->
   <header>
-	<div class="row">
-                <div class="large-2 columns">
-                  <img src="images/nail.png" />
-                </div>
-		<hgroup class="large-10 columns">
-                  <h1 >NAIL</h1>
-                  <h2>Simple Modular Class Creation</h2>
-                </hgroup>
-	</div>
+    <div class="row">
+      <div class="large-2 columns">
+        <img src="images/nail.png"/>
+      </div>
+      <hgroup class="large-10 columns">
+        <h1 >NAIL</h1>
+        <h2>simple modular class builder<h2>
+      </hgroup>
+    </div>
   </header>
 	<div class="row">
-		<div class="section-container auto" data-section>
+		<div class="section-container auto large-12 columns" data-section>
                   <%=content%>
                 </div>
 	</div>
 
-  <script>
+  <!--<script>
   document.write('<script src=' +
   ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
   '.js><\/script>')
   </script>
 
   <script src="js/foundation.min.js"></script>
-
+-->
 </body>
 </html>
 
