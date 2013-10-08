@@ -1,21 +1,3 @@
-
-[glob]: https://npmjs.org/package/glob
-[grunt-contrib-coffee]: https://github.com/gruntjs/grunt-contrib-coffee
-[grunt-istanbul-coverage]: https://github.com/daniellmb/grunt-istanbul-coverage
-[grunt-istanbul]: https://github.com/taichi/grunt-istanbul
-[grunt-simple-mocha]: https://github.com/yaymukund/grunt-simple-mocha
-[grunt]: http://gruntjs.com/
-[install]: http://github.com/benjamn/install
-[mocha]: https://npmjs.org/package/mocha
-[nail-common]: https://npmjs.org/package/nail-common
-[nail-core]: https://github.com/noptic/nail-core
-[npm]: https://npmjs.org/doc/
-[should]: https://github.com/visionmedia/should.js
-[underscore]: http://underscorejs.org
-
-
-[About]: spec/About.coffee.md
-
 nail - simple modular classes
 =============================
 Nail is a simple but flexble tool for creating coffe/java script classes.
@@ -98,35 +80,3 @@ For a demonstrtion we will use a very simple generic factory function.
       nick.firstName.should.equal 'Nick'
       nick.lastName.should.equal 'Pudel'
       nick.getFormatedName().should.equal "Pudel, Nick" 
-
-##Setup
-Install with npm:
-```bash
-npm install nail
-```
-
-Clone with GIT:
-```bash
-git clone https://github.com/noptic/nail.git
-```
-
-##Documentation
-Head here → [docs](docs)
-
-##Dependencies
- - [nail-common] 0.1.0-alpha2
- - [install] ~0.1.7
- - [npm] ~1.3.11
- - [underscore] ~1.5.2
- - [nail-core] 0.1.0-beta3
-
-##DevDependencies
- - [grunt-contrib-coffee] 0.7.0
- - [grunt] 0.4.1
- - [grunt-simple-mocha] ~0.4.0
- - [mocha] ~1.12.0
- - [should] ~1.2.2
- - [grunt-istanbul-coverage] 0.0.1
- - [grunt-istanbul] ~0.2.3
- - [glob] ~3.2.6
- - [underscore] ~1.5.2

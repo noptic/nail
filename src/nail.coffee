@@ -1,10 +1,9 @@
-# nail
-# https://github.com/noptic/nail
-#
-# Copyright (c) 2013 noptic
-# Licensed under the MIT license.
-module.exports = require('nail-core').use(
-  require 'nail-extend'
-  require 'nail-properties'
-  require 'nail-methods'
+common  = require 'nail-common'
+core    = require 'nail-core'
+
+module.exports = core.use(
+  common.parent
+  common.properties
+  common.methods
+  common.injector
 )

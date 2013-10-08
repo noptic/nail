@@ -1,0 +1,6 @@
+{"ts":1381095640623,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1381095845056,"patch":[[{"diffs":[[1,"common  = require 'nail-common'\ncore    = require 'nail-core'\n"]],"start1":0,"start2":0,"length1":0,"length2":62}]],"length":62,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1381162420606,"patch":[[{"diffs":[[0,"l-core'\n"],[1,"\nmodule.exports.full = core.use(\n  common.parent\n  common.properties\n  common.methods\n)\n"]],"start1":54,"start2":54,"length1":8,"length2":96}]],"length":150,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1381184850027,"patch":[[{"diffs":[[0,"methods\n"],[1,"  common.init\n"],[0,")\n"]],"start1":140,"start2":140,"length1":10,"length2":24}]],"length":164,"saved":false}
+{"ts":1381185400642,"patch":[[{"diffs":[[0,"orts"],[-1,".full"],[0," = c"]],"start1":73,"start2":73,"length1":13,"length2":8}]],"length":159,"saved":false}
+{"ts":1381257783814,"patch":[[{"diffs":[[0,"n.in"],[-1,"it"],[1,"jector"],[0,"\n)\n"]],"start1":150,"start2":150,"length1":9,"length2":13}]],"length":163,"saved":false}
