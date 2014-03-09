@@ -14,7 +14,7 @@
 [underscore]: http://underscorejs.org
 
 
-[About]: spec/About.coffee.md
+[About]: spec\About.coffee.md
 
 nail - simple modular classes
 =============================
@@ -48,39 +48,43 @@ Nail uses the API defined by [nail-core] and modules from [nail-common].
 Usage
 =====
 ###Creating a class
-The following code defines the class `Person` and adds it to exports and the 
+The following code defines the class `Person` and adds it to exports and the
 namespace 'my-module'.
-    
+
     nail.to exports, 'my-module', Person:
-      properties:
+      fields:
         firstName:  null
         lastName:   null
+      properties:
+        fullName:
+          get:-> "#{@lastName}, #{@firstName}"
       methods:
-        getFormatedName: -> return "#{@lastName}, #{@firstName}"
+        greet: -> return "hello, #{@fullName}"
 
 Now our package exports the constructor for Person.
-    
+
     describe 'Person', ->
-      it 'is a function', -> 
+      it 'is a function', ->
         (_.isFunction exports.Person).should.be.ok
 
 ###creating an instance
-Properties are injected into the new Instance.
-    
+Values are injected into the new Instance.
+
     dalia = new exports.Person
       firstName: 'Dalia'
       lastName:  'Scarlet'
-    it 'injects properties', ->
+    it 'injects data', ->
       dalia.firstName.should.equal 'Dalia'
       dalia.lastName.should.equal  'Scarlet'
+    it 'creates properties', ->
+      dalia.fullName.should.equal  'Scarlet, Dalia'
     it 'creates methods', ->
-      dalia.getFormatedName().should.equal 'Scarlet, Dalia'
+      dalia.greet().should.equal 'hello, Scarlet, Dalia'
 
 ###using namespaces
-Using namespaces will give evry class a unique name. This name can be used
-to when using resources.
+Using namespaces will give every class a unique name.
 
-For a demonstrtion we will use a very simple generic factory function.
+This simple generic factory functionm creates instance of Person from JSON.
 
     it "can be loaded from json", ->
       sampleJSON ="""
@@ -88,16 +92,16 @@ For a demonstrtion we will use a very simple generic factory function.
                     "type": "my-module.Person",
                     "properties":{
                       "firstName": "Nick",
-                      "lastName":  "Pudel"   
+                      "lastName":  "Pudel"
                     }
                   }
                 """
       loadObject = (data) -> new nail.lib[data.type] data.properties
-    
+
       nick  = loadObject(JSON.parse sampleJSON)
       nick.firstName.should.equal 'Nick'
       nick.lastName.should.equal 'Pudel'
-      nick.getFormatedName().should.equal "Pudel, Nick" 
+      nick.fullName.should.equal "Pudel, Nick"
 
 ##Setup
 Install with npm:
@@ -114,7 +118,7 @@ git clone https://github.com/noptic/nail.git
 Head here → [docs](docs)
 
 ##Dependencies
- - [nail-common] 0.1.0-alpha2
+ - [nail-common] 0.1.0-alpha3
  - [install] ~0.1.7
  - [npm] ~1.3.11
  - [underscore] ~1.5.2

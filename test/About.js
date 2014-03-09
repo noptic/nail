@@ -8,13 +8,20 @@ _ = require('underscore');
 
 nail.to(exports, 'my-module', {
   Person: {
-    properties: {
+    fields: {
       firstName: null,
       lastName: null
     },
+    properties: {
+      fullName: {
+        get: function() {
+          return "" + this.lastName + ", " + this.firstName;
+        }
+      }
+    },
     methods: {
-      getFormatedName: function() {
-        return "" + this.lastName + ", " + this.firstName;
+      greet: function() {
+        return "hello, " + this.fullName;
       }
     }
   }
@@ -31,23 +38,27 @@ dalia = new exports.Person({
   lastName: 'Scarlet'
 });
 
-it('injects properties', function() {
+it('injects data', function() {
   dalia.firstName.should.equal('Dalia');
   return dalia.lastName.should.equal('Scarlet');
 });
 
+it('creates properties', function() {
+  return dalia.fullName.should.equal('Scarlet, Dalia');
+});
+
 it('creates methods', function() {
-  return dalia.getFormatedName().should.equal('Scarlet, Dalia');
+  return dalia.greet().should.equal('hello, Scarlet, Dalia');
 });
 
 it("can be loaded from json", function() {
   var loadObject, nick, sampleJSON;
-  sampleJSON = "{\n  \"type\": \"my-module.Person\",\n  \"properties\":{\n    \"firstName\": \"Nick\",\n    \"lastName\":  \"Pudel\"   \n  }\n}";
+  sampleJSON = "{\n  \"type\": \"my-module.Person\",\n  \"properties\":{\n    \"firstName\": \"Nick\",\n    \"lastName\":  \"Pudel\"\n  }\n}";
   loadObject = function(data) {
     return new nail.lib[data.type](data.properties);
   };
   nick = loadObject(JSON.parse(sampleJSON));
   nick.firstName.should.equal('Nick');
   nick.lastName.should.equal('Pudel');
-  return nick.getFormatedName().should.equal("Pudel, Nick");
+  return nick.fullName.should.equal("Pudel, Nick");
 });
