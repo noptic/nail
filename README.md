@@ -118,7 +118,7 @@ git clone https://github.com/noptic/nail.git
 Head here → [docs](docs)
 
 ##Dependencies
- - [nail-common] 0.1.0-alpha3
+ - [nail-common] 0.1.0-alpha4
  - [install] ~0.1.7
  - [npm] ~1.3.11
  - [underscore] ~1.5.2
