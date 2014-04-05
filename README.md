@@ -122,7 +122,7 @@ Head here → [docs](docs)
  - [install] ~0.1.7
  - [npm] ~1.3.11
  - [underscore] ~1.5.2
- - [nail-core] 0.1.0-beta3
+ - [nail-core] 0.1.0-beta4
 
 ##DevDependencies
  - [grunt-contrib-coffee] 0.7.0
